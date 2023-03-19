@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:CadetAccounting"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="MainStyle.xaml"/>
     </Application.Resources>
 </Application>

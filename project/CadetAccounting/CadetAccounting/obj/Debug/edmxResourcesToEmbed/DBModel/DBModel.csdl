@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CadetAccountingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cadet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupID" Type="Int32" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="Self.FK__Cadet__Group" FromRole="Cadet" ToRole="Group" />
+    <NavigationProperty Name="Contracts" Relationship="Self.FK__Contract__Cadet" FromRole="Cadet" ToRole="Contract" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CadetID" Type="Int32" Nullable="false" />
+    <Property Name="DateOfConclusion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StepCount" Type="Int32" Nullable="false" />
+    <Property Name="StepPrice" Type="Decimal" Precision="14" Scale="2" Nullable="false" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="14" Scale="2" />
+    <NavigationProperty Name="Cadet" Relationship="Self.FK__Contract__Cadet" FromRole="Contract" ToRole="Cadet" />
+    <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__Contract" FromRole="Contract" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LicenseCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Cadets" Relationship="Self.FK__Cadet__Group" FromRole="Group" ToRole="Cadet" />
+    <NavigationProperty Name="LicenseCategory" Relationship="Self.FK__Group__LicenseCategory" FromRole="Group" ToRole="LicenseCategory" />
+  </EntityType>
+  <EntityType Name="LicenseCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Groups" Relationship="Self.FK__Group__LicenseCategory" FromRole="LicenseCategory" ToRole="Group" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContractID" Type="Int32" Nullable="false" />
+    <Property Name="PaymentPrice" Type="Decimal" Precision="14" Scale="2" Nullable="false" />
+    <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Paid" Type="Boolean" />
+    <NavigationProperty Name="Contract" Relationship="Self.FK__Payment__Contract" FromRole="Payment" ToRole="Contract" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__Cadet__Group">
+    <End Role="Group" Type="Self.Group" Multiplicity="1" />
+    <End Role="Cadet" Type="Self.Cadet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Cadet">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Contract__Cadet">
+    <End Role="Cadet" Type="Self.Cadet" Multiplicity="1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cadet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="CadetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payment__Contract">
+    <End Role="Contract" Type="Self.Contract" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contract">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="ContractID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Group__LicenseCategory">
+    <End Role="LicenseCategory" Type="Self.LicenseCategory" Multiplicity="1" />
+    <End Role="Group" Type="Self.Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LicenseCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="LicenseCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CadetAccountingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cadets" EntityType="Self.Cadet" />
+    <EntitySet Name="Contracts" EntityType="Self.Contract" />
+    <EntitySet Name="Groups" EntityType="Self.Group" />
+    <EntitySet Name="LicenseCategories" EntityType="Self.LicenseCategory" />
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__Cadet__Group" Association="Self.FK__Cadet__Group">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="Cadet" EntitySet="Cadets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Contract__Cadet" Association="Self.FK__Contract__Cadet">
+      <End Role="Cadet" EntitySet="Cadets" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payment__Contract" Association="Self.FK__Payment__Contract">
+      <End Role="Contract" EntitySet="Contracts" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Group__LicenseCategory" Association="Self.FK__Group__LicenseCategory">
+      <End Role="LicenseCategory" EntitySet="LicenseCategories" />
+      <End Role="Group" EntitySet="Groups" />
+    </AssociationSet>
+    <FunctionImport Name="PaymentGroupReport" ReturnType="Collection(CadetAccountingModel.PaymentGroupReport_Result)">
+      <Parameter Name="GROUP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(CadetAccountingModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(CadetAccountingModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="PaymentGroupReport_Result">
+    <Property Type="String" Name="Surname" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Patronymic" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Phone" Nullable="false" MaxLength="13" />
+    <Property Type="DateTime" Name="DateOfConclusion" Nullable="false" />
+    <Property Type="Decimal" Name="TotalPrice" Nullable="true" Precision="14" Scale="2" />
+    <Property Type="Int32" Name="StepCount" Nullable="false" />
+    <Property Type="Int32" Name="PaidSteps" Nullable="true" />
+    <Property Type="Decimal" Name="CurrentPaidSum" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Int32" Name="UnpaidSteps" Nullable="true" />
+    <Property Type="Int32" Name="PaymentArrears" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
