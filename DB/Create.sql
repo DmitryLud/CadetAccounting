@@ -98,3 +98,17 @@ AS
 	WHERE GR.[Name] = @GROUP
 	GROUP BY CAD.Surname, CAD.[Name], CAD.Patronymic, CAD.Phone, CON.DateOfConclusion, CON.TotalPrice, CON.StepCount
 GO
+
+INSERT INTO LicenseCategory VALUES
+	('юл'),
+	('ю'),
+	('ю1'),
+	('б'),
+	('я'),
+	('D'),
+	('бе'),
+	('яе'),
+	('DE'),
+	('F'),
+	('I')
+GO

@@ -10,6 +10,8 @@ namespace CadetAccounting
             InitializeComponent();
             Manager.MainFrame = MainFrame;
 
+            PaymentBtn.Click += (s, e) => { MainFrame.Navigate(new MainPage()); };
+            GroupBtn.Click += (s, e) => { MainFrame.Navigate(new GroupPage()); };
             CadetBtn.Click += (s, e) => { MainFrame.Navigate(new CadetPage()); };
 
         }

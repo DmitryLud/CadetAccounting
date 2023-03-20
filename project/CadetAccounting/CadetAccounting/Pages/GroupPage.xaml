@@ -32,22 +32,27 @@
 
                 <TextBlock Text="Название группы" Width="200"/>
                 <TextBox x:Name="NameTB" FontSize="18" BorderThickness="0"
-                         Width="200"/>
+                         Width="200"
+                         Text="{Binding Name}"/>
 
                 <TextBlock Text="Дата начала" Width="200"
                            Margin="0,10"/>
                 <TextBox x:Name="StartDateTB" FontSize="18" BorderThickness="0"
-                         Width="200"/>
+                         Width="200"
+                         Text="{Binding DateStart, StringFormat={}{0:d/M/yyyy}}"/>
 
                 <TextBlock Text="Дата окончания" Width="200"
                            Margin="0,10"/>
                 <TextBox x:Name="EndDateTB" FontSize="18" BorderThickness="0"
-                         Width="200"/>
+                         Width="200"
+                         Text="{Binding DateEnd, StringFormat={}{0:d/M/yyyy}}"/>
 
                 <TextBlock Text="Категория прав" Width="200"
                            Margin="0,10"/>
                 <ComboBox x:Name="LicenseCB" FontSize="18" BorderThickness="0"
-                         Width="200"/>
+                         Width="200"
+                         DisplayMemberPath="Name"
+                         SelectedItem="{Binding LicenseCategory}"/>
 
             </StackPanel>
         </Border>

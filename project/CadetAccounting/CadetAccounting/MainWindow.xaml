@@ -47,7 +47,8 @@
         
         <Frame x:Name="MainFrame"
                Grid.Column="1"
-               Margin="10,10,10,0"/>
+               Margin="10,10,10,0"
+               NavigationUIVisibility="Hidden"/>
 
     </Grid>
 </Window>
