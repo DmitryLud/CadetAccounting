@@ -39,13 +39,13 @@
                            Margin="0,10"/>
                 <TextBox x:Name="StartDateTB" FontSize="18" BorderThickness="0"
                          Width="200"
-                         Text="{Binding DateStart, StringFormat={}{0:d/M/yyyy}}"/>
+                         Text="{Binding DateStart, StringFormat={}{0:d/MM/yyyy}}"/>
 
                 <TextBlock Text="Дата окончания" Width="200"
                            Margin="0,10"/>
                 <TextBox x:Name="EndDateTB" FontSize="18" BorderThickness="0"
                          Width="200"
-                         Text="{Binding DateEnd, StringFormat={}{0:d/M/yyyy}}"/>
+                         Text="{Binding DateEnd, StringFormat={}{0:d/MM/yyyy}}"/>
 
                 <TextBlock Text="Категория прав" Width="200"
                            Margin="0,10"/>

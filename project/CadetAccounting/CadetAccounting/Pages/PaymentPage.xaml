@@ -20,7 +20,8 @@
                   IsReadOnly="False"
                   CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Назначеная дата" Binding="{Binding PaymentDate}"
+                <DataGridTextColumn Header="Назначеная дата" Binding="{Binding PaymentDate,
+                                    StringFormat={}{0:d/MM/yyyy}}"
                                     Width="*"
                                     IsReadOnly="True"/>
                 <DataGridTextColumn Header="Стоимость этапа" Binding="{Binding PaymentPrice}"

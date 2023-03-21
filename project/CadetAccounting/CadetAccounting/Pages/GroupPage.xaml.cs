@@ -23,7 +23,7 @@ namespace CadetAccounting.Pages
         {
             InitializeComponent();
 
-            _current.DateStart = DateTime.Now;
+            _current.DateStart = DateTime.Now.AddDays(7);
             _current.DateEnd = _current.DateStart.AddDays(103);
 
             if (selected != null)
@@ -46,8 +46,8 @@ namespace CadetAccounting.Pages
                 errors.AppendLine("Введите название группы");
             if (CadetAccountingEntities.GetContext().Groups.Where(x=>x.Name == _current.Name).Count() != 0)
                 errors.AppendLine("Группа с таким именем уже существует");
-            if (_current.DateStart == null)
-                errors.AppendLine("Введите дату начала");
+            if (_current.DateStart == null || _current.DateStart <= DateTime.Now)
+                errors.AppendLine("Введите корректную дату начала");
             if (_current.DateEnd == null || _current.DateEnd < _current.DateStart)
                 errors.AppendLine("Введите корректную дату окончания");
             if (_current.LicenseCategory == null)

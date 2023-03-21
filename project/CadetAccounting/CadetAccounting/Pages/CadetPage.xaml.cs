@@ -30,7 +30,7 @@ namespace CadetAccounting.Pages
             }
             DataContext = _current;
 
-            GroupCB.ItemsSource = CadetAccountingEntities.GetContext().Groups.Where(x => x.Cadets.Count() < 30).ToList();
+            GroupCB.ItemsSource = CadetAccountingEntities.GetContext().Groups.Where(x => x.Cadets.Count() < 30 && x.DateStart > DateTime.Now).ToList();
 
             SaveBtn.Click += (s, e) => { SaveData(); };
             CancelBtn.Click += (s, e) => { Manager.MainFrame.Navigate(new MainPage()); };
