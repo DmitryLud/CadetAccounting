@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CadetAccounting"
         mc:Ignorable="d"
-        Title="Учет оплаты курсантов" Height="920" Width="1080"
+        Title="Учет оплаты курсантов" Height="920" Width="1280"
+        MinWidth="1220"
+        MinHeight="600"
         WindowStartupLocation="CenterScreen">
     <Grid Background="#2c5291">
         

@@ -87,8 +87,8 @@ GO
 CREATE OR ALTER PROC PaymentGroupReport
 	@GROUP VARCHAR(30)
 AS
-	SELECT CAD.Surname, CAD.[Name], CAD.Patronymic, CAD.Phone, CON.DateOfConclusion, CON.TotalPrice, CON.StepCount, (SELECT COUNT(Paid) FROM Payment WHERE Paid = 1) AS 'PaidSteps',
-		(SELECT ISNULL(SUM(PaymentPrice),0) FROM Payment WHERE Paid = 1) AS 'CurrentPaidSum', (SELECT COUNT(Paid) FROM Payment WHERE Paid = 0) AS 'UnpaidSteps',
+	SELECT CAD.Surname, CAD.[Name], CAD.Patronymic, CAD.Phone, CON.DateOfConclusion, CON.TotalPrice, CON.StepCount, (SELECT COUNT(Paid) FROM Payment WHERE ContractID = CON.ID AND Paid = 1) AS 'PaidSteps',
+		(SELECT ISNULL(SUM(PaymentPrice),0) FROM Payment WHERE Paid = 1) AS 'CurrentPaidSum', (SELECT COUNT(Paid) FROM Payment WHERE ContractID = CON.ID AND Paid = 0) AS 'UnpaidSteps',
 		(SELECT COUNT(PaymentDate) FROM Payment WHERE PaymentDate < CONVERT (date, GETDATE()) AND Paid = 0) AS 'PaymentArrears'
 	FROM [Contract] CON
 	JOIN [Payment] PAY ON CON.ID = PAY.ContractID
@@ -96,7 +96,7 @@ AS
 	JOIN [Group] GR ON CAD.GroupID = GR.ID
 	JOIN [LicenseCategory] LIC ON GR.LicenseCategoryID = LIC.ID
 	WHERE GR.[Name] = @GROUP
-	GROUP BY CAD.Surname, CAD.[Name], CAD.Patronymic, CAD.Phone, CON.DateOfConclusion, CON.TotalPrice, CON.StepCount
+	GROUP BY CAD.Surname, CAD.[Name], CAD.Patronymic, CAD.Phone, CON.DateOfConclusion, CON.TotalPrice, CON.StepCount, CON.ID
 GO
 
 INSERT INTO LicenseCategory VALUES
@@ -112,3 +112,6 @@ INSERT INTO LicenseCategory VALUES
 	('F'),
 	('I')
 GO
+
+
+exec PaymentGroupReport '1B'

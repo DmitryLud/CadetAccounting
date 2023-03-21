@@ -81,5 +81,15 @@
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Background" Value="#FF3872BF"/>
     </Style>
-    
+
+    <Style TargetType="{x:Type DataGrid}">
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="RowHeaderWidth" Value="0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
 </ResourceDictionary>
