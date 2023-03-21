@@ -12,17 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CadetAccounting.DBModel;
 
 namespace CadetAccounting.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
-    /// </summary>
     public partial class MainPage : Page
     {
         public MainPage()
         {
             InitializeComponent();
+
+            DG.ItemsSource = CadetAccountingEntities.GetContext().Contracts.ToList();
+
+            PaymentBtn.Click += (s, e) => { Manager.MainFrame.Navigate(new PaymentPage((DG.SelectedItem as Contract).ID)); };
+
         }
+
+
+
     }
 }
