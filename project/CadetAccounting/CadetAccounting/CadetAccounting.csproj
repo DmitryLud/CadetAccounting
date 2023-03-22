@@ -59,6 +59,12 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
+    <Reference Include="Spire.Doc, Version=10.8.0.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Doc.10.8.0\lib\net40\Spire.Doc.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=8.8.6.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Doc.10.8.0\lib\net40\Spire.Pdf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -90,6 +96,7 @@
       <DependentUpon>CadetAccountingDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="WordHelper.cs" />
     <Page Include="MainStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

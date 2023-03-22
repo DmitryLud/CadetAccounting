@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using CadetAccounting.Pages;
 
 namespace CadetAccounting
@@ -16,6 +17,7 @@ namespace CadetAccounting
             GroupBtn.Click += (s, e) => { MainFrame.Navigate(new GroupPage()); };
             CadetBtn.Click += (s, e) => { MainFrame.Navigate(new CadetPage()); };
             ReportBtn.Click += (s, e) => { MainFrame.Navigate(new ReportPage()); };
+            ReadMeBtn.Click += (s, e) => { System.Diagnostics.Process.Start(Directory.GetCurrentDirectory() + @"\readme.pdf"); };
 
         }
     }

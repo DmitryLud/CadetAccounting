@@ -32,6 +32,7 @@ namespace CadetAccounting.Pages
 
             PaymentBtn.Click += (s, e) => { Manager.MainFrame.Navigate(new PaymentPage((DG.SelectedItem as Contract).ID)); };
             ClearBtn.Click += (s, e) => { Clear(); };
+            ContractBtn.Click += (s, e) => { WordHelper.ReplaceText(DG.SelectedItem as Contract); };
 
             GroupCB.SelectionChanged += (s, e) => { Filter(); };
             SearchTB.TextChanged += (s, e) => { Filter(); };

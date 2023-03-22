@@ -108,6 +108,8 @@ INSERT INTO LicenseCategory VALUES
 	('I')
 GO
 
+SET DATEFORMAT dmy; 
+
 INSERT INTO [Group] VALUES
 	(4,'1B', '21.03.2022','21.08.2022'),
 	(4,'2B', '11.03.2023','11.08.2023'),
