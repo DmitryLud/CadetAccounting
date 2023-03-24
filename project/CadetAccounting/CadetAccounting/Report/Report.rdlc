@@ -15,16 +15,16 @@
               <Width>1.26042in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>2.07292in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.26042in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.14583in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.39583in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.16667in</Width>
@@ -415,7 +415,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!TotalPrice.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>0.00 'Br'</Format>
+                                <rd:FormatSymbolCulture>be-BY</rd:FormatSymbolCulture>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -475,7 +478,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!CurrentPaidSum.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>0.00 'Br'</Format>
+                                <rd:FormatSymbolCulture>be-BY</rd:FormatSymbolCulture>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -535,7 +541,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!PaymentArrears.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>0.00 'Br'</Format>
+                                <rd:FormatSymbolCulture>ru-BY</rd:FormatSymbolCulture>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -585,7 +594,7 @@
         <Top>0.47792in</Top>
         <Left>0.16542in</Left>
         <Height>0.5in</Height>
-        <Width>8.57292in</Width>
+        <Width>10.30209in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -907,7 +916,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Список должников</Value>
+                <Value>Список по всей группе</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -915,10 +924,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>1.20014in</Top>
+        <Top>0.15847in</Top>
         <Left>0.16542in</Left>
         <Height>0.25in</Height>
-        <Width>1.39583in</Width>
+        <Width>1.54166in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -934,7 +943,7 @@
     <Height>4.90625in</Height>
     <Style />
   </Body>
-  <Width>8.85292in</Width>
+  <Width>10.65501in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
