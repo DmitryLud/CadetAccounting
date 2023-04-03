@@ -190,3 +190,14 @@ D:\CadetAccounting\CadetAccounting\project\CadetAccounting\CadetAccounting\obj\D
 D:\CadetAccounting\CadetAccounting\project\CadetAccounting\CadetAccounting\obj\Debug\Pages\ReportPage.baml
 D:\CadetAccounting\CadetAccounting\project\CadetAccounting\CadetAccounting\obj\Debug\RdlCompile.cache
 D:\CadetAccounting\CadetAccounting\project\CadetAccounting\CadetAccounting\obj\Debug\RdlCompile.compiled
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\bin\Debug\Spire.Doc.dll
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\bin\Debug\Spire.Pdf.dll
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\bin\Debug\Microsoft.mshtml.dll
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\bin\Debug\Microsoft.MSXML.dll
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\bin\Debug\Spire.Doc.xml
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\bin\Debug\Spire.Pdf.xml
