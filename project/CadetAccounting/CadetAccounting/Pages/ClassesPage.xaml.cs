@@ -36,7 +36,6 @@ namespace CadetAccounting.Pages
         {
             if (GroupCB.SelectedItem == null) return;
             string group = (GroupCB.SelectedItem as Group).Name;
-            MessageBox.Show(group);
             DG.ItemsSource = CadetAccountingEntities.GetContext().ClassesLists.Where(x => x.Group.Name == group).ToList();
         }
     }

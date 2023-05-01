@@ -24,6 +24,7 @@ namespace CadetAccounting.Pages
 
             DG.ItemsSource = CadetAccountingEntities.GetContext().Teachers.ToList();
 
+            AddBtn.Click += (s, e) => { Manager.MainFrame.Navigate(new TeacherAddPage()); };
             EditBtn.Click += (s, e) => { Manager.MainFrame.Navigate(new TeacherAddPage(DG.SelectedItem as Teacher)); };
             CancelBtn.Click += (s, e) => { Manager.MainFrame.Navigate(new MainPage()); };
 
