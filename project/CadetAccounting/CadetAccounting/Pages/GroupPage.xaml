@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CadetAccounting.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="800"
+      d:DesignHeight="700" d:DesignWidth="800"
       Title="GroupPage">
 
     <Grid>
@@ -23,7 +23,7 @@
                     Grid.Row="0"
                     Width="250"
                     Margin="0,15"
-                    MaxHeight="420">
+                    MaxHeight="470">
 
             <StackPanel Orientation="Vertical"
                         Width="240"
@@ -34,6 +34,11 @@
                 <TextBox x:Name="NameTB" FontSize="18" BorderThickness="0"
                          Width="200"
                          Text="{Binding Name}"/>
+
+                <TextBlock Text="Формат обучения" Width="200"/>
+                <ComboBox x:Name="TypeCB" FontSize="18" BorderThickness="0"
+                         Width="200"
+                         SelectedItem="{Binding Type}"/>
 
                 <TextBlock Text="Дата начала" Width="200"
                            Margin="0,10"/>
@@ -53,6 +58,11 @@
                          Width="200"
                          DisplayMemberPath="Name"
                          SelectedItem="{Binding LicenseCategory}"/>
+
+                <TextBlock Text="Преподаватель" Width="200"
+                           Margin="0,10"/>
+                <ComboBox x:Name="TeacherCB" FontSize="18" BorderThickness="0"
+                         Width="200"/>
 
             </StackPanel>
         </Border>

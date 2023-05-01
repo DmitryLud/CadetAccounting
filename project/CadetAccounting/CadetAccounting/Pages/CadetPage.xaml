@@ -23,7 +23,7 @@
                     Grid.Row="0"
                     Width="250"
                     Margin="0,15"
-                    MaxHeight="420">
+                    MaxHeight="470">
         
             <StackPanel Orientation="Vertical"
                         Width="240"
@@ -46,6 +46,12 @@
                 <TextBox x:Name="PatronymicTB" FontSize="18" BorderThickness="0"
                          Width="200"
                          Text="{Binding Patronymic}"/>
+
+                <TextBlock Text="Email" Width="200"
+                           Margin="0,10"/>
+                <TextBox x:Name="EmailTB" FontSize="18" BorderThickness="0"
+                         Width="200" MaxLength="50"
+                         Text="{Binding Email}"/>
 
                 <TextBlock Text="Телефон" Width="200"
                            Margin="0,10"/>

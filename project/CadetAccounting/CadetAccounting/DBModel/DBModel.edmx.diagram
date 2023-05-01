@@ -4,17 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="436b1fdb00dd43c5a674d84a8cbd03f2" Name="Diagram1">
-        <EntityTypeShape EntityType="CadetAccountingModel.Cadet" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="CadetAccountingModel.Contract" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="CadetAccountingModel.Group" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="CadetAccountingModel.LicenseCategory" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CadetAccountingModel.Payment" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CadetAccountingModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+      <Diagram DiagramId="e22b4fd44a90491ba6e5e431b6adb112" Name="Diagram1">
+        <EntityTypeShape EntityType="CadetAccountingModel.Cadet" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CadetAccountingModel.Class" Width="1.5" PointX="6" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CadetAccountingModel.ClassesList" Width="1.5" PointX="8.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CadetAccountingModel.Contract" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CadetAccountingModel.Group" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CadetAccountingModel.LicenseCategory" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="CadetAccountingModel.Payment" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CadetAccountingModel.sysdiagram" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CadetAccountingModel.Teacher" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CadetAccountingModel.Archive" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CadetAccountingModel.ArchiveView" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
         <AssociationConnector Association="CadetAccountingModel.FK__Cadet__Group" ManuallyRouted="false" />
         <AssociationConnector Association="CadetAccountingModel.FK__Contract__Cadet" ManuallyRouted="false" />
+        <AssociationConnector Association="CadetAccountingModel.FK__ClassesList__Class" ManuallyRouted="false" />
+        <AssociationConnector Association="CadetAccountingModel.FK__ClassesList__Group" ManuallyRouted="false" />
         <AssociationConnector Association="CadetAccountingModel.FK__Payment__Contract" ManuallyRouted="false" />
         <AssociationConnector Association="CadetAccountingModel.FK__Group__LicenseCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="CadetAccountingModel.FK__Group__Teacher" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,0 +1,71 @@
+﻿<Page x:Class="CadetAccounting.Pages.ClassesAddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CadetAccounting.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ClassesAddPage">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+
+
+        <Border CornerRadius="20"
+                    BorderThickness="0"
+                    Background="#FF65A2CA"
+                    Grid.Row="0"
+                    Width="250"
+                    Margin="0,15"
+                    MaxHeight="320">
+
+            <StackPanel Orientation="Vertical"
+                        Width="240"
+                        Margin="0,25"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                <TextBlock Text="Тема занятия" Width="200"/>
+                <TextBox x:Name="NameTB" FontSize="18" BorderThickness="0"
+                         Width="200"
+                         Text="{Binding Name}"/>
+
+                <TextBlock Text="Дата" Width="200"
+                           Margin="0,10"/>
+                <TextBox x:Name="DateTB" FontSize="18" BorderThickness="0"
+                         Width="200"
+                         Text="{Binding Date, StringFormat={}{0:d/MM/yyyy}}"/>
+
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1"
+                Background="#FF579DCA"
+                MaxWidth="400"
+                Margin="0,5,0,0"
+                CornerRadius="20,20,0,0">
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom">
+
+                <Button x:Name="SaveBtn"
+                        Content="Сохранить"
+                        Margin="0,10,10,10"/>
+                <Button x:Name="CancelBtn"
+                        Content="Отменить"
+                        Margin="0,10,10,10"/>
+
+            </StackPanel>
+
+
+        </Border>
+
+    </Grid>
+</Page>

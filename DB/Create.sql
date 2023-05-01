@@ -3,7 +3,7 @@
 USE CadetAccounting
 GO
 
-DROP TABLE IF EXISTS [Payment], [Contract], [Cadet], [Group], [LicenseCategory]
+DROP TABLE IF EXISTS [Payment], [ClassesList], [Class], [Contract], [Cadet], [Group], [Teacher], [LicenseCategory]
 
 CREATE TABLE [LicenseCategory](
   [ID] INT IDENTITY NOT NULL,
@@ -12,14 +12,45 @@ CREATE TABLE [LicenseCategory](
 )
 GO
 
+CREATE TABLE [Teacher](
+  [ID] INT IDENTITY NOT NULL,
+  [Surname] VARCHAR(30) NOT NULL,
+  [Name] VARCHAR(30) NOT NULL,
+  [Patronymic] VARCHAR(30) NOT NULL,
+  [Phone] VARCHAR(13) NOT NULL,
+  CONSTRAINT [PK__Teacher__ID] PRIMARY KEY ([ID]),
+)
+GO
+
 CREATE TABLE [Group](
   [ID] INT IDENTITY NOT NULL,
   [LicenseCategoryID] INT NOT NULL,
+  [TeacherID] INT NOT NULL,
   [Name] VARCHAR(30) NOT NULL,
+  [Type] VARCHAR(30) NOT NULL,
   [DateStart] DATE NOT NULL,
   [DateEnd] DATE NOT NULL,
   CONSTRAINT [PK__Group__ID] PRIMARY KEY ([ID]),
-  CONSTRAINT [FK__Group__LicenseCategory] FOREIGN KEY ([LicenseCategoryID]) REFERENCES [LicenseCategory]([ID])
+  CONSTRAINT [FK__Group__LicenseCategory] FOREIGN KEY ([LicenseCategoryID]) REFERENCES [LicenseCategory]([ID]),
+  CONSTRAINT [FK__Group__Teacher] FOREIGN KEY ([TeacherID]) REFERENCES [Teacher]([ID])
+)
+GO
+
+CREATE TABLE [Class](
+  [ID] INT IDENTITY NOT NULL,
+  [Name] VARCHAR(30) NOT NULL,
+  [Date] DATE NOT NULL,
+  CONSTRAINT [PK__Class__ID] PRIMARY KEY ([ID]),
+)
+GO
+
+CREATE TABLE [ClassesList](
+  [ID] INT IDENTITY NOT NULL,
+  [GroupID] INT NOT NULL,
+  [ClassID] INT NOT NULL,
+  CONSTRAINT [PK__ClassesList__ID] PRIMARY KEY ([ID]),
+  CONSTRAINT [FK__ClassesList__Group] FOREIGN KEY ([GroupID]) REFERENCES [Group]([ID]),
+  CONSTRAINT [FK__ClassesList__Class] FOREIGN KEY ([ClassID]) REFERENCES [Class]([ID])
 )
 GO
 
@@ -30,6 +61,7 @@ CREATE TABLE [Cadet](
   [Name] VARCHAR(30) NOT NULL,
   [Patronymic] VARCHAR(30) NOT NULL,
   [Phone] VARCHAR(13) NOT NULL,
+  [Email] VARCHAR(50) NOT NULL,
   CONSTRAINT [PK__Cadet__ID] PRIMARY KEY ([ID]),
   CONSTRAINT [FK__Cadet__Group] FOREIGN KEY ([GroupID]) REFERENCES [Group]([ID])
 )

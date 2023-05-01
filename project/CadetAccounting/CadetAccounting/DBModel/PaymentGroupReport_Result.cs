@@ -23,6 +23,6 @@ namespace CadetAccounting.DBModel
         public Nullable<int> PaidSteps { get; set; }
         public Nullable<decimal> CurrentPaidSum { get; set; }
         public Nullable<int> UnpaidSteps { get; set; }
-        public Nullable<int> PaymentArrears { get; set; }
+        public Nullable<decimal> PaymentArrears { get; set; }
     }
 }

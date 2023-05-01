@@ -10,8 +10,28 @@
     <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Patronymic" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Phone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Group" Relationship="Self.FK__Cadet__Group" FromRole="Cadet" ToRole="Group" />
     <NavigationProperty Name="Contracts" Relationship="Self.FK__Contract__Cadet" FromRole="Cadet" ToRole="Contract" />
+  </EntityType>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="ClassesLists" Relationship="Self.FK__ClassesList__Class" FromRole="Class" ToRole="ClassesList" />
+  </EntityType>
+  <EntityType Name="ClassesList">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupID" Type="Int32" Nullable="false" />
+    <Property Name="ClassID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Class" Relationship="Self.FK__ClassesList__Class" FromRole="ClassesList" ToRole="Class" />
+    <NavigationProperty Name="Group" Relationship="Self.FK__ClassesList__Group" FromRole="ClassesList" ToRole="Group" />
   </EntityType>
   <EntityType Name="Contract">
     <Key>
@@ -32,11 +52,15 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="LicenseCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="TeacherID" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="Cadets" Relationship="Self.FK__Cadet__Group" FromRole="Group" ToRole="Cadet" />
+    <NavigationProperty Name="ClassesLists" Relationship="Self.FK__ClassesList__Group" FromRole="Group" ToRole="ClassesList" />
     <NavigationProperty Name="LicenseCategory" Relationship="Self.FK__Group__LicenseCategory" FromRole="Group" ToRole="LicenseCategory" />
+    <NavigationProperty Name="Teacher" Relationship="Self.FK__Group__Teacher" FromRole="Group" ToRole="Teacher" />
   </EntityType>
   <EntityType Name="LicenseCategory">
     <Key>
@@ -67,6 +91,33 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Surname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Groups" Relationship="Self.FK__Group__Teacher" FromRole="Teacher" ToRole="Group" />
+  </EntityType>
+  <EntityType Name="Archive">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArchiveView">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
   <Association Name="FK__Cadet__Group">
     <End Role="Group" Type="Self.Group" Multiplicity="1" />
     <End Role="Cadet" Type="Self.Cadet" Multiplicity="*" />
@@ -88,6 +139,30 @@
       </Principal>
       <Dependent Role="Contract">
         <PropertyRef Name="CadetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ClassesList__Class">
+    <End Role="Class" Type="Self.Class" Multiplicity="1" />
+    <End Role="ClassesList" Type="Self.ClassesList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClassesList">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ClassesList__Group">
+    <End Role="Group" Type="Self.Group" Multiplicity="1" />
+    <End Role="ClassesList" Type="Self.ClassesList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClassesList">
+        <PropertyRef Name="GroupID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -115,13 +190,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Group__Teacher">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+    <End Role="Group" Type="Self.Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="CadetAccountingEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Cadets" EntityType="Self.Cadet" />
+    <EntitySet Name="Classes" EntityType="Self.Class" />
+    <EntitySet Name="ClassesLists" EntityType="Self.ClassesList" />
     <EntitySet Name="Contracts" EntityType="Self.Contract" />
     <EntitySet Name="Groups" EntityType="Self.Group" />
     <EntitySet Name="LicenseCategories" EntityType="Self.LicenseCategory" />
     <EntitySet Name="Payments" EntityType="Self.Payment" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+    <EntitySet Name="Archives" EntityType="Self.Archive" />
+    <EntitySet Name="ArchiveViews" EntityType="Self.ArchiveView" />
     <AssociationSet Name="FK__Cadet__Group" Association="Self.FK__Cadet__Group">
       <End Role="Group" EntitySet="Groups" />
       <End Role="Cadet" EntitySet="Cadets" />
@@ -130,12 +222,24 @@
       <End Role="Cadet" EntitySet="Cadets" />
       <End Role="Contract" EntitySet="Contracts" />
     </AssociationSet>
+    <AssociationSet Name="FK__ClassesList__Class" Association="Self.FK__ClassesList__Class">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="ClassesList" EntitySet="ClassesLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ClassesList__Group" Association="Self.FK__ClassesList__Group">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="ClassesList" EntitySet="ClassesLists" />
+    </AssociationSet>
     <AssociationSet Name="FK__Payment__Contract" Association="Self.FK__Payment__Contract">
       <End Role="Contract" EntitySet="Contracts" />
       <End Role="Payment" EntitySet="Payments" />
     </AssociationSet>
     <AssociationSet Name="FK__Group__LicenseCategory" Association="Self.FK__Group__LicenseCategory">
       <End Role="LicenseCategory" EntitySet="LicenseCategories" />
+      <End Role="Group" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Group__Teacher" Association="Self.FK__Group__Teacher">
+      <End Role="Teacher" EntitySet="Teachers" />
       <End Role="Group" EntitySet="Groups" />
     </AssociationSet>
     <FunctionImport Name="PaymentGroupReport" ReturnType="Collection(CadetAccountingModel.PaymentGroupReport_Result)">
@@ -183,7 +287,7 @@
     <Property Type="Int32" Name="PaidSteps" Nullable="true" />
     <Property Type="Decimal" Name="CurrentPaidSum" Nullable="true" Precision="38" Scale="2" />
     <Property Type="Int32" Name="UnpaidSteps" Nullable="true" />
-    <Property Type="Int32" Name="PaymentArrears" Nullable="true" />
+    <Property Type="Decimal" Name="PaymentArrears" Nullable="true" Precision="38" Scale="2" />
   </ComplexType>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />

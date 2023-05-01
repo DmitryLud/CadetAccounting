@@ -29,18 +29,22 @@ namespace CadetAccounting.DBModel
             return _context;
         }
 
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
     
         public virtual DbSet<Cadet> Cadets { get; set; }
+        public virtual DbSet<Class> Classes { get; set; }
+        public virtual DbSet<ClassesList> ClassesLists { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<LicenseCategory> LicenseCategories { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Teacher> Teachers { get; set; }
+        public virtual DbSet<Archive> Archives { get; set; }
+        public virtual DbSet<ArchiveView> ArchiveViews { get; set; }
     
         public virtual ObjectResult<PaymentGroupReport_Result> PaymentGroupReport(string gROUP)
         {

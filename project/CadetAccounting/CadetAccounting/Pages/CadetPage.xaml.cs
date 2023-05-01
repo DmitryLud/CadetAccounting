@@ -48,6 +48,8 @@ namespace CadetAccounting.Pages
                 errors.AppendLine("Введите отчество");
             if (string.IsNullOrWhiteSpace(_current.Phone) || !Regex.IsMatch(_current.Phone, @"\+375[0-9]{9}"))
                 errors.AppendLine("Введите номер телефона");
+            if (string.IsNullOrWhiteSpace(_current.Email) || !Regex.IsMatch(_current.Email, @"^[a-z0-9](\.?[a-z0-9]){5,}(@gmail\.com)|(@mail\.ru)$"))
+                errors.AppendLine("Введите почту");
             if (_current.Group == null)
                 errors.AppendLine("Выберите группу");
 

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\CadetAccounting\CadetAccounting\project\CadetAccounting\CadetAccounting\obj\Debug\
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\obj\Debug\
 CadetAccounting
 none
 false
 DEBUG;TRACE
-D:\CadetAccounting\CadetAccounting\project\CadetAccounting\CadetAccounting\App.xaml
-8-1251444562
-7586623920
-281593280065
-28824277944
-MainStyle.xaml;MainWindow.xaml;Pages\CadetPage.xaml;Pages\ContractPage.xaml;Pages\GroupPage.xaml;Pages\MainPage.xaml;Pages\PaymentPage.xaml;Pages\ReportPage.xaml;
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\App.xaml
+12-1294515964
+747022152
+37689965220
+281683337945
+MainStyle.xaml;MainWindow.xaml;Pages\CadetPage.xaml;Pages\ClassesAddPage.xaml;Pages\ClassesPage.xaml;Pages\ContractPage.xaml;Pages\GroupPage.xaml;Pages\MainPage.xaml;Pages\PaymentPage.xaml;Pages\ReportPage.xaml;Pages\TeacherAddPage.xaml;Pages\TeacherPage.xaml;
 
-False
+True
 

@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CadetAccounting"
         mc:Ignorable="d"
-        Title="Учет оплаты курсантов" Height="920" Width="1330"
-        MinWidth="1330"
+        Title="Учет оплаты курсантов" Height="920" Width="1340"
+        MinWidth="1340"
         MinHeight="600"
         WindowStartupLocation="CenterScreen">
     <Grid Background="#2c5291">
         
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="190"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -31,23 +31,38 @@
 
             <Button x:Name="PaymentBtn"
                     Content="Главная"
-                    Margin="0,50,0,0"/>
+                    Margin="0,50,0,0"
+                    Width="160"/>
 
             <Button x:Name="GroupBtn"
                     Content="Группы"
-                    Margin="0,10,0,0"/>            
+                    Margin="0,10,0,0"
+                    Width="160"/>
+
+            <Button x:Name="SchedulesBtn"
+                    Content="Расписания"
+                    Margin="0,10,0,0"
+                    Width="160"/>
 
             <Button x:Name="CadetBtn"
                     Content="Курсанты"
-                    Margin="0,10,0,0"/>
+                    Margin="0,10,0,0"
+                    Width="160"/>
+
+            <Button x:Name="TeacherBtn"
+                    Content="Преподаватели"
+                    Margin="0,10,0,0"
+                    Width="160"/>
 
             <Button x:Name="ReportBtn"
                     Content="Отчет"
-                    Margin="0,10,0,0"/>
+                    Margin="0,10,0,0"
+                    Width="160"/>
 
             <Button x:Name="ReadMeBtn"
                     Content="Справка"
-                    Margin="0,10,0,0"/>
+                    Margin="0,10,0,0"
+                    Width="160"/>
 
         </StackPanel>
         

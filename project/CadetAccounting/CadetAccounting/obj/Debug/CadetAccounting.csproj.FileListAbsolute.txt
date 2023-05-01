@@ -201,3 +201,11 @@ D:\CadetAccounting\project\CadetAccounting\CadetAccounting\bin\Debug\Microsoft.V
 D:\CadetAccounting\project\CadetAccounting\CadetAccounting\bin\Debug\Microsoft.MSXML.dll
 D:\CadetAccounting\project\CadetAccounting\CadetAccounting\bin\Debug\Spire.Doc.xml
 D:\CadetAccounting\project\CadetAccounting\CadetAccounting\bin\Debug\Spire.Pdf.xml
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\obj\Debug\Pages\TeacherAddPage.g.cs
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\obj\Debug\Pages\TeacherPage.g.cs
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\obj\Debug\Pages\TeacherAddPage.baml
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\obj\Debug\Pages\TeacherPage.baml
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\obj\Debug\Pages\ClassesAddPage.g.cs
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\obj\Debug\Pages\ClassesPage.g.cs
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\obj\Debug\Pages\ClassesAddPage.baml
+D:\CadetAccounting\project\CadetAccounting\CadetAccounting\obj\Debug\Pages\ClassesPage.baml
