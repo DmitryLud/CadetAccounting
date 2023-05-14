@@ -9,11 +9,114 @@ using System.IO;
 using System.Security.Principal;
 using System.Windows;
 using System.Windows.Forms;
+using Spire.Doc.Documents;
+using Spire.Doc.Fields;
 
 namespace CadetAccounting
 {
     class WordHelper
     {
+        public static void SaveClasses(List<ClassesList> groups)
+        {
+            string[][] data = new string[groups.Count()][];
+
+            for (int i = 0; i < groups.Count(); i++)
+            {
+                data[i] = new string[] { groups[i].Class.Name, groups[i].Class.Date.ToString("dd/MMMM/yyyy") };
+            }
+
+            Document document = new Document();
+            Section section = document.AddSection();
+            Paragraph par = section.AddParagraph();
+
+            par.Text = "Группа: " + groups[0].Group.Name;
+
+            Table table = section.AddTable(true);
+            table.ResetCells(data.Length + 1, 2);
+
+            TableRow FRow = table.Rows[0];
+            FRow.IsHeader = true;
+
+            FRow.Height = 23;
+
+            Paragraph p = FRow.Cells[0].AddParagraph();
+            FRow.Cells[0].CellFormat.VerticalAlignment = Spire.Doc.Documents.VerticalAlignment.Middle;
+            p.Format.HorizontalAlignment = Spire.Doc.Documents.HorizontalAlignment.Center;
+            TextRange TR = p.AppendText("Тема занятия");
+
+            Paragraph p1 = FRow.Cells[1].AddParagraph();
+            FRow.Cells[1].CellFormat.VerticalAlignment = Spire.Doc.Documents.VerticalAlignment.Middle;
+            p1.Format.HorizontalAlignment = Spire.Doc.Documents.HorizontalAlignment.Center;
+            TextRange TR1 = p1.AppendText("Дата занятия");
+
+            for (int r = 0; r < data.Length; r++)
+            {
+                
+                TableRow DataRow = table.Rows[r + 1];
+                DataRow.Height = 20;
+                
+                for (int c = 0; c < data[r].Length; c++)
+                {
+                    DataRow.Cells[c].CellFormat.VerticalAlignment = Spire.Doc.Documents.VerticalAlignment.Middle;
+                    Paragraph p2 = DataRow.Cells[c].AddParagraph();
+                    TextRange TR2 = p2.AppendText(data[r][c]);
+                    p2.Format.HorizontalAlignment = Spire.Doc.Documents.HorizontalAlignment.Center;
+                    TR2.CharacterFormat.FontName = "Calibri";
+                    
+                    TR2.CharacterFormat.FontSize = 11;
+                    
+                }
+                
+            }
+
+            try
+            {
+                string link;
+
+                using (StreamReader reader = new StreamReader(Directory.GetCurrentDirectory() + @"\data.txt"))
+                {
+                    link = reader.ReadLine();
+                }
+
+                if (!string.IsNullOrEmpty(link) && !Directory.Exists(link))
+                {
+                    link = null;
+                    using (StreamWriter writer = new StreamWriter(Directory.GetCurrentDirectory() + @"\data.txt"))
+                    {
+                        writer.Flush();
+                    }
+                }
+                if (string.IsNullOrEmpty(link))
+                {
+                    FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
+                    DialogResult result = folderBrowser.ShowDialog();
+                    if (!string.IsNullOrWhiteSpace(folderBrowser.SelectedPath))
+                    {
+                        using (StreamWriter writer = new StreamWriter(Directory.GetCurrentDirectory() + @"\data.txt"))
+                        {
+                            writer.WriteLine(folderBrowser.SelectedPath);
+                            link = folderBrowser.SelectedPath;
+                        }
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("Выберите папку для сохранение файлов", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                }
+
+                string newFilePath = link + $"\\Группа_{groups[0].Group.Name}.docx";
+                document.SaveToFile(newFilePath, FileFormat.Docx);
+                System.Diagnostics.Process.Start(newFilePath);
+            }
+            catch (Exception)
+            {
+
+            }
+
+            document.SaveToFile(@"D:\.net test\test.docx", FileFormat.Docx);
+        }
+
         public static void ReplaceText(Contract contract)
         {
             Document document = new Document(Directory.GetCurrentDirectory() + @"\contract.docx").Clone();

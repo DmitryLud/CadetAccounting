@@ -27,9 +27,26 @@ namespace CadetAccounting.Pages
             AddBtn.Click += (s, e) => { Manager.MainFrame.Navigate(new ClassesAddPage(GroupCB.SelectedItem as Group)); };
             EditBtn.Click += (s, e) => { Manager.MainFrame.Navigate(new ClassesAddPage(GroupCB.SelectedItem as Group, (DG.SelectedItem as ClassesList).Class)); };
             CancelBtn.Click += (s, e) => { Manager.MainFrame.Navigate(new MainPage()); };
+            ExportBtn.Click += (s, e) => { Export(); };
 
             GroupCB.SelectionChanged += (s, e) => { SelectedGroup(); };
 
+        }
+
+        private void Export()
+        {
+            string data = "";
+
+            List<ClassesList> groups = new List<ClassesList>();
+
+            for (int i = 0; i < DG.Items.Count; i++)
+            {
+                groups.Add(DG.Items[i] as ClassesList);
+                
+            }
+
+
+            WordHelper.SaveClasses(groups);
         }
 
         private void SelectedGroup()
@@ -37,6 +54,7 @@ namespace CadetAccounting.Pages
             if (GroupCB.SelectedItem == null) return;
             string group = (GroupCB.SelectedItem as Group).Name;
             DG.ItemsSource = CadetAccountingEntities.GetContext().ClassesLists.Where(x => x.Group.Name == group).ToList();
+            TypeTB.Text = (GroupCB.SelectedItem as Group).Type;
         }
     }
 }
