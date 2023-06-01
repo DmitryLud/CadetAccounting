@@ -21,6 +21,8 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="RoomNumber" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ClassesLists" Relationship="Self.FK__ClassesList__Class" FromRole="Class" ToRole="ClassesList" />
   </EntityType>
   <EntityType Name="ClassesList">
@@ -54,7 +56,7 @@
     <Property Name="LicenseCategoryID" Type="Int32" Nullable="false" />
     <Property Name="TeacherID" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="Cadets" Relationship="Self.FK__Cadet__Group" FromRole="Group" ToRole="Cadet" />

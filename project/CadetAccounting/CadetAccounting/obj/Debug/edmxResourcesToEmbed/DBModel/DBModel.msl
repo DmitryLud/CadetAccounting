@@ -20,6 +20,8 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

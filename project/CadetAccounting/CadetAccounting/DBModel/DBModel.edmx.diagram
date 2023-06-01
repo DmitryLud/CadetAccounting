@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e22b4fd44a90491ba6e5e431b6adb112" Name="Diagram1">
+      <Diagram DiagramId="c3408f3c69a744bd81d614d20e6dbd90" Name="Diagram1">
         <EntityTypeShape EntityType="CadetAccountingModel.Cadet" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CadetAccountingModel.Class" Width="1.5" PointX="6" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CadetAccountingModel.Class" Width="1.5" PointX="6" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CadetAccountingModel.ClassesList" Width="1.5" PointX="8.25" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CadetAccountingModel.Contract" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CadetAccountingModel.Group" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />

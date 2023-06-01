@@ -29,6 +29,8 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+    <Property Name="RoomNumber" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ClassesList">
     <Key>
@@ -57,7 +59,7 @@
     <Property Name="LicenseCategoryID" Type="int" Nullable="false" />
     <Property Name="TeacherID" Type="int" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="Type" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="DateStart" Type="date" Nullable="false" />
     <Property Name="DateEnd" Type="date" Nullable="false" />
   </EntityType>

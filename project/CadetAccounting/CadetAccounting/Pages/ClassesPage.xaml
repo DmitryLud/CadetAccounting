@@ -28,6 +28,25 @@
                 <DataGridTextColumn Header="Дата занятия" Binding="{Binding Class.Date,
                                         StringFormat={}{0:d/MM/yyyy}}"
                                     Width="*"/>
+                <DataGridTextColumn Header="Время занятия" Binding="{Binding Class.Time}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Аудитория" Binding="{Binding Class.RoomNumber}"
+                                    Width="*"/>
+                <DataGridTemplateColumn Header="Преподаватель" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Group.Teacher.Surname}"
+                                           Foreground="Black"/>
+                                <TextBlock Text="{Binding Group.Teacher.Name}"
+                                           Foreground="Black"
+                                           Margin="5,0,5,0"/>
+                                <TextBlock Text="{Binding Group.Teacher.Patronymic}"
+                                           Foreground="Black"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 

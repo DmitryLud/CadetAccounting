@@ -43,6 +43,8 @@ namespace CadetAccounting.Pages
                 errors.AppendLine("Введите название темы занятия");
             if (_current.Date == null)
                 errors.AppendLine("Введите дату");
+            if (_current.RoomNumber <= 0)
+                errors.AppendLine("Введите номер аудитории");
 
             if (errors.Length > 0)
             {

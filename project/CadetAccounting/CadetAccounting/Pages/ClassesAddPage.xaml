@@ -42,6 +42,18 @@
                          Width="200"
                          Text="{Binding Date, StringFormat={}{0:d/MM/yyyy}}"/>
 
+                <TextBlock Text="Время" Width="200"
+                           Margin="0,10"/>
+                <TextBox x:Name="TimeTB" FontSize="18" BorderThickness="0"
+                         Width="200"
+                         Text="{Binding Time}"/>
+
+                <TextBlock Text="№ аудитории" Width="200"
+                           Margin="0,10"/>
+                <TextBox x:Name="RoomTB" FontSize="18" BorderThickness="0"
+                         Width="200"
+                         Text="{Binding RoomNumber}"/>
+
             </StackPanel>
         </Border>
 
