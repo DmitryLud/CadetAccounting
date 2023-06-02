@@ -32,17 +32,20 @@
                                     Width="*"/>
                 <DataGridTextColumn Header="Аудитория" Binding="{Binding Class.RoomNumber}"
                                     Width="*"/>
-                <DataGridTemplateColumn Header="Преподаватель" Width="*">
+                <DataGridTemplateColumn Header="Преподаватель" Width="240">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Group.Teacher.Surname}"
-                                           Foreground="Black"/>
+                                           Foreground="Black"
+                                           FontSize="16"/>
                                 <TextBlock Text="{Binding Group.Teacher.Name}"
                                            Foreground="Black"
-                                           Margin="5,0,5,0"/>
+                                           Margin="5,0,5,0"
+                                           FontSize="16"/>
                                 <TextBlock Text="{Binding Group.Teacher.Patronymic}"
-                                           Foreground="Black"/>
+                                           Foreground="Black"
+                                           FontSize="16"/>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

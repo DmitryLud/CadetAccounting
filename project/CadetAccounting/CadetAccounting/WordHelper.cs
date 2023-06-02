@@ -22,17 +22,17 @@ namespace CadetAccounting
 
             for (int i = 0; i < groups.Count(); i++)
             {
-                data[i] = new string[] { groups[i].Class.Name, groups[i].Class.Date.ToString("dd/MMMM/yyyy") };
+                data[i] = new string[] { groups[i].Class.Name, groups[i].Class.Date.ToString("dd/MMMM/yyyy"), groups[i].Class.Time.Hours.ToString() + ":" + groups[i].Class.Time.Minutes.ToString(), groups[i].Class.RoomNumber.ToString() };
             }
 
             Document document = new Document();
             Section section = document.AddSection();
             Paragraph par = section.AddParagraph();
 
-            par.Text = "Группа: " + groups[0].Group.Name;
+            par.Text = "Группа: " + groups[0].Group.Name + "\nПреподаватель: " + groups[0].Group.Teacher.Surname + " " + groups[0].Group.Teacher.Name + " " + groups[0].Group.Teacher.Patronymic;
 
             Table table = section.AddTable(true);
-            table.ResetCells(data.Length + 1, 2);
+            table.ResetCells(data.Length + 1, 4);
 
             TableRow FRow = table.Rows[0];
             FRow.IsHeader = true;
@@ -49,6 +49,16 @@ namespace CadetAccounting
             p1.Format.HorizontalAlignment = Spire.Doc.Documents.HorizontalAlignment.Center;
             TextRange TR1 = p1.AppendText("Дата занятия");
 
+            Paragraph p2 = FRow.Cells[2].AddParagraph();
+            FRow.Cells[2].CellFormat.VerticalAlignment = Spire.Doc.Documents.VerticalAlignment.Middle;
+            p1.Format.HorizontalAlignment = Spire.Doc.Documents.HorizontalAlignment.Center;
+            TextRange TR2 = p2.AppendText("Время занятия");
+
+            Paragraph p3 = FRow.Cells[3].AddParagraph();
+            FRow.Cells[3].CellFormat.VerticalAlignment = Spire.Doc.Documents.VerticalAlignment.Middle;
+            p1.Format.HorizontalAlignment = Spire.Doc.Documents.HorizontalAlignment.Center;
+            TextRange TR3 = p3.AppendText("№ кабинета");
+
             for (int r = 0; r < data.Length; r++)
             {
                 
@@ -58,12 +68,12 @@ namespace CadetAccounting
                 for (int c = 0; c < data[r].Length; c++)
                 {
                     DataRow.Cells[c].CellFormat.VerticalAlignment = Spire.Doc.Documents.VerticalAlignment.Middle;
-                    Paragraph p2 = DataRow.Cells[c].AddParagraph();
-                    TextRange TR2 = p2.AppendText(data[r][c]);
-                    p2.Format.HorizontalAlignment = Spire.Doc.Documents.HorizontalAlignment.Center;
-                    TR2.CharacterFormat.FontName = "Calibri";
-                    
-                    TR2.CharacterFormat.FontSize = 11;
+                    Paragraph para = DataRow.Cells[c].AddParagraph();
+                    TextRange TRan = para.AppendText(data[r][c]);
+                    para.Format.HorizontalAlignment = Spire.Doc.Documents.HorizontalAlignment.Center;
+                    TRan.CharacterFormat.FontName = "Calibri";
+
+                    TRan.CharacterFormat.FontSize = 11;
                     
                 }
                 
