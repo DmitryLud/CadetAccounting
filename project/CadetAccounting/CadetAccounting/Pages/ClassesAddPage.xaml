@@ -40,7 +40,7 @@
                            Margin="0,10"/>
                 <TextBox x:Name="DateTB" FontSize="18" BorderThickness="0"
                          Width="200"
-                         Text="{Binding Date, StringFormat={}{0:d/MM/yyyy}}"/>
+                         Text="{Binding Date, StringFormat=dd/MM/yyyy}"/>
 
                 <TextBlock Text="Время" Width="200"
                            Margin="0,10"/>

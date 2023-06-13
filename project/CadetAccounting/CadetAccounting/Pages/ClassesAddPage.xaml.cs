@@ -46,6 +46,28 @@ namespace CadetAccounting.Pages
             if (_current.RoomNumber <= 0)
                 errors.AppendLine("Введите номер аудитории");
 
+            int id = 0;
+
+            try
+            {
+                id = CadetAccountingEntities.GetContext().ClassesLists.First(y => y.ClassID == _current.ID).ID;
+            }
+            catch (Exception)
+            {
+
+            }
+            
+            foreach (var it in CadetAccountingEntities.GetContext().ClassesLists.Where(y => y.ID != id &&
+                y.Group.TeacherID == classesList.Group.TeacherID && y.Class.Date == _current.Date)/*.Select(y => y.Class.Time)*/)
+            {
+                var item = it.Class.Time;
+                if(Math.Abs((item - _current.Time).TotalMinutes) <= 90)
+                {
+                    MessageBox.Show("В данное время преподаватель ведет занятие у другой группы.\nВведите другое время!");
+                    return;
+                }
+            }
+
             if (errors.Length > 0)
             {
                 MessageBox.Show(errors.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
